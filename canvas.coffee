@@ -1,4 +1,4 @@
-#​<​canvas id="canvas" width="200px" height="200px" style="border: 1px solid black"></canvas>
+#​<canvas id="canvas" width="200px" height="200px" style="border: 1px solid black"></canvas>
 canvas = null
 context = null
 
@@ -12,6 +12,7 @@ initCanvas = () ->
 # h is height of canvas
 drawGrid = (c, w, h) ->
 	drawVerticalLines(c, w, h)
+	drawHorizontalLines(c, w, h)
 	return
 	
 drawVerticalLines = (c, w, h) ->
@@ -20,11 +21,20 @@ drawVerticalLines = (c, w, h) ->
 	c.beginPath()
 	while i < w - xInc
 		i = i + xInc
-		console.log(i)
 		c.moveTo(i, 0)
 		c.lineTo(i, h)
 		c.stroke()
-		
+	return
+	
+drawHorizontalLines = (c, w, h) ->
+	yInc = h / 10
+	i = 0
+	c.beginPath()
+	while i < h - yInc
+		i = i + yInc
+		c.moveTo(0, i)
+		c.lineTo(w, i)
+		c.stroke()
 	return
 
 initCanvas()
